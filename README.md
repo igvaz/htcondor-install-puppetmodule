@@ -1,1 +1,1 @@
-# HTCondor-Puppet-Module
+# HTCondor Puppet Module for Installation and Basic Configuration
