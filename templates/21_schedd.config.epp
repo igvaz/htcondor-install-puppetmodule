@@ -1,0 +1,15 @@
+# HTCondor configuration: Schedulers
+
+# Daemon list for Schedulers
+DAEMON_LIST = MASTER, SCHEDD
+
+CONDOR_Q_ONLY_MY_JOBS = False
+
+## Logs
+MAX_MASTER_LOG = 1Wk
+MAX_NUM_MASTER_LOG = 8
+
+MAX_SCHEDD_LOG = 1Wk
+MAX_NUM_STARTD_LOG = 8
+
+MAX_JOBS_RUNNING = 150000

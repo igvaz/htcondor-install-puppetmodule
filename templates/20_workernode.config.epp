@@ -1,0 +1,30 @@
+# HTCondor configuration: Workers
+
+# Daemon list for Workers
+DAEMON_LIST = MASTER, STARTD
+
+## Partitionable slots
+NUM_SLOTS = 1
+NUM_SLOTS_TYPE_1 = 1
+SLOT_TYPE_1 = 100%
+SLOT_TYPE_1_PARTITIONABLE = TRUE
+
+## Without this lots of memory (& hence job slots) will be wasted
+MODIFY_REQUEST_EXPR_REQUESTMEMORY = quantize(RequestMemory,($(DETECTED_MEMORY)-2048)/$(DETECTED_CORES))
+
+## Make sure jobs have independent PID namespaces
+USE_PID_NAMESPACES = TRUE
+
+## If the binaries are updated, let any running jobs finish before restarting
+#MASTER_NEW_BINARY_RESTART = PEACEFUL
+
+## Logs
+MAX_MASTER_LOG = 1Wk
+MAX_NUM_MASTER_LOG = 8
+
+MAX_STARTD_LOG = 1Wk
+MAX_NUM_STARTD_LOG = 8
+
+MAX_STARTER_LOG = 1Wk
+MAX_NUM_STARTER_LOG = 8
+

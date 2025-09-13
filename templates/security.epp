@@ -1,0 +1,5 @@
+if version >= 23.10.0
+    use security:recommended
+else
+    use security:recommended_v9_0
+endif

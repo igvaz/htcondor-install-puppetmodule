@@ -1,0 +1,19 @@
+# HTCondor configuration: Central Manager
+
+# Daemon list for Central Managers
+DAEMON_LIST = MASTER, COLLECTOR, NEGOTIATOR
+
+##  When is this machine willing to start a job?
+START = FALSE
+
+## Logs
+MAX_NEGOTIATOR_LOG = 104857600
+MAX_NUM_NEGOTIATOR_LOG = 10
+
+MAX_COLLECTOR_LOG = 104857600
+MAX_NUM_COLLECTOR_LOG = 10
+
+MAX_MASTER_LOG = 104857600
+MAX_NUM_MASTER_LOG = 10
+
+NEGOTIATOR_DEBUG = D_FULLDEBUG
