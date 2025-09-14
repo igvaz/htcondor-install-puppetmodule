@@ -12,9 +12,10 @@
 #   Password for pool authentication.
 
 class htcondor::scheduler (
-  String $condor_host        = htcondor::params::$condor_host,
-  String $password_directory = htcondor::params::$password_directory,
-  String $pool_password      = htcondor::params::$pool_password,
+  String $condor_host        = $htcondor::params::condor_host,
+  String $condor_sched       = $htcondor::params::condor_sched,
+  String $password_directory = $htcondor::params::password_directory,
+  String $pool_password      = $htcondor::params::pool_password,
 ) {
   include htcondor::params
 

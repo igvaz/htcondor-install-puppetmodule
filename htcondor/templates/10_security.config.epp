@@ -1,3 +1,23 @@
+CONDOR_HOST        = <%= $condor_host %>.<%= $domain %>
+COLLECTOR_HOST     = <%= $condor_host %>.<%= $domain %>
+SCHEDD_NAME        = <%= $condor_sched %>.<%= $domain %>
+UID_DOMAIN         = <%= $domain %>
+FILESYSTEM_DOMAIN  = <%= $domain %>
+
+SEC_DEFAULT_AUTHENTICATION_METHODS = FS, IDTOKENS
+SEC_DEFAULT_AUTHENTICATION = REQUIRED
+SEC_CLIENT_AUTHENTICATION = REQUIRED
+SEC_DEFAULT_ENCRYPTION = OPTIONAL
+SEC_DEFAULT_INTEGRITY = OPTIONAL
+
+SEC_PASSWORD_DIRECTORY = <%= $password_directory %>
+
+ALLOW_CONFIG        = <%= $condor_host %>.<%= $domain %>
+ALLOW_ADMINISTRATOR = <%= $condor_host %>.<%= $domain %>
+ALLOW_DAEMON        = *.<%= $domain %>, unauthenticated@unmapped
+ALLOW_READ          = *.<%= $domain %>
+ALLOW_WRITE         = *.<%= $domain %>
+
 if version >= 23.10.0
     use security:recommended
 else

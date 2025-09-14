@@ -88,27 +88,9 @@ SBIN    = $(RELEASE_DIR)/sbin
 LIBEXEC = $(RELEASE_DIR)/libexec/condor
 SHARE   = $(RELEASE_DIR)/share/condor
 
-CONDOR_HOST        = <%= $condor_host %>
-COLLECTOR_HOST     = <%= $condor_host %>
-SCHEDD_NAME        = condorsched.<%= $domain %>
-UID_DOMAIN         = <%= $domain %>
-FILESYSTEM_DOMAIN  = <%= $domain %>
+#JAVA_CLASSPATH_DEFAULT = $(SHARE) .
 
-SEC_DEFAULT_AUTHENTICATION_METHODS = FS, IDTOKENS
-SEC_DEFAULT_AUTHENTICATION = REQUIRED
-SEC_CLIENT_AUTHENTICATION = REQUIRED
-SEC_DEFAULT_ENCRYPTION = OPTIONAL
-SEC_DEFAULT_INTEGRITY = OPTIONAL
-
-SEC_TOKEN_SYSTEM_DIRECTORY = <%= $token_directory %>
-SEC_PASSWORD_DIRECTORY = <%= $password_directory %>
-
-ALLOW_CONFIG        = condorcm.<%= $domain %>
-ALLOW_ADMINISTRATOR = condorcm.<%= $domain %>
-ALLOW_DAEMON        = *.<%= $domain %>, unauthenticated@unmapped
-ALLOW_READ          = *.<%= $domain %>
-ALLOW_WRITE         = *.<%= $domain %>
-
+#SINGULARITY = /usr/bin/singularity
 
 MAX_JOBS_RUNNING = 100000
 

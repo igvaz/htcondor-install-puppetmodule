@@ -5,7 +5,8 @@
 # and use these variables as defaults.
 
 class htcondor::params {
-  $condor_host        = 'condorcm.domain.com'
+  $condor_host        = 'central_manager_hostname'
+  $condor_sched       = 'scheduler_hostname'
   $password_directory = '/etc/condor/passwords.d'
   $local_dirs         = [
     '/localdisk1',
@@ -15,6 +16,6 @@ class htcondor::params {
     '/localdisk1/condor/spool',
     '/localdisk1/condor/execute'
   ]
-  $pool_password      = 'lhc6?h1c'
-  $domain             = 'domain.com'
+  $pool_password      = 'secretpassword'
+  $domain             = 'example.domain.com'
 }

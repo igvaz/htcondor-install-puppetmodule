@@ -36,10 +36,8 @@ All parameters are centralized in `htcondor::params` for easy management and ove
 | Parameter           | Description                                      | Default Value                      |
 |---------------------|--------------------------------------------------|------------------------------------|
 | `condor_host`       | Hostname of the HTCondor central manager         | `'condorcm.domain.com'`            |
-| `token_directory`   | Directory for HTCondor tokens                    | `'/etc/condor/tokens.d'`           |
 | `password_directory`| Directory for HTCondor passwords                 | `'/etc/condor/passwords.d'`        |
 | `pool_password`     | Password for pool authentication                 | `'lhc6?h1c'`                       |
-| `manager_identity`  | Identity for the condor token                    | `'condor@condorcm.domain.com'`     |
 | `domain`            | Domain used for UID_DOMAIN and related settings  | `'domain.com'`                     |
 
 ## Configuration Templates

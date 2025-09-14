@@ -12,9 +12,10 @@
 #   Array of local directories for HTCondor to use.
 
 class htcondor::config (
-  String $condor_host        = htcondor::params::$condor_host,
-  String $password_directory = htcondor::params::$password_directory,
-  Array[String] $local_dirs  = htcondor::params::$local_dirs,
+  String $condor_host        = $htcondor::params::condor_host,
+  String $condor_sched       = $htcondor::params::condor_sched,
+  String $password_directory = $htcondor::params::password_directory,
+  Array[String] $local_dirs  = $htcondor::params::local_dirs,
 ) {
   include htcondor::params
   include htcondor::security
@@ -41,8 +42,9 @@ class htcondor::config (
     ensure  => file,
     content => epp('htcondor/condor_config.epp', {
       'condor_host'        => $condor_host,
+      'condor_sched'       => $condor_sched,
       'password_directory' => $password_directory,
-      'domain'             => htcondor::params::$domain,
+      'domain'             => $htcondor::params::domain,
     }),
     mode    => '0644',
     owner   => 'root',
