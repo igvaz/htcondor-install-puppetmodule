@@ -6,21 +6,15 @@
 #
 # @param condor_host
 #   The hostname of the HTCondor central manager.
-# @param token_directory
-#   Directory for HTCondor tokens.
 # @param password_directory
 #   Directory for HTCondor passwords.
 # @param pool_password
 #   Password for pool authentication.
-# @param manager_identity
-#   Identity for the condor token.
 
 class htcondor::worker (
   String $condor_host        = htcondor::params::$condor_host,
-  String $token_directory    = htcondor::params::$token_directory,
   String $password_directory = htcondor::params::$password_directory,
   String $pool_password      = htcondor::params::$pool_password,
-  String $manager_identity   = htcondor::params::$manager_identity,
 ) {
   include htcondor::params
 
@@ -49,14 +43,6 @@ class htcondor::worker (
     user    => 'root',
     path    => ['/usr/bin', '/usr/sbin'],
     require => File[$password_directory],
-  }
-
-  exec { 'generate_condor_token':
-    command => "umask 0077; condor_token_create -identity ${manager_identity} > ${token_directory}/${manager_identity}",
-    creates => "${token_directory}/${manager_identity}",
-    user    => 'root',
-    path    => ['/usr/bin', '/usr/sbin'],
-    require => File[$token_directory],
     notify  => Service['condor'],
   }
 }

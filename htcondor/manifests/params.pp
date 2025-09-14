@@ -6,7 +6,6 @@
 
 class htcondor::params {
   $condor_host        = 'condorcm.domain.com'
-  $token_directory    = '/etc/condor/tokens.d'
   $password_directory = '/etc/condor/passwords.d'
   $local_dirs         = [
     '/localdisk1',
@@ -17,6 +16,5 @@ class htcondor::params {
     '/localdisk1/condor/execute'
   ]
   $pool_password      = 'lhc6?h1c'
-  $manager_identity   = 'condor@condorcm.domain.com'
   $domain             = 'domain.com'
 }

@@ -6,8 +6,6 @@
 #
 # @param condor_host
 #   The hostname of the HTCondor central manager.
-# @param token_directory
-#   The directory where HTCondor security tokens are stored.
 # @param password_directory
 #   The directory where HTCondor security passwords are stored.
 # @param local_dirs
@@ -15,7 +13,6 @@
 
 class htcondor::config (
   String $condor_host        = htcondor::params::$condor_host,
-  String $token_directory    = htcondor::params::$token_directory,
   String $password_directory = htcondor::params::$password_directory,
   Array[String] $local_dirs  = htcondor::params::$local_dirs,
 ) {
@@ -44,7 +41,6 @@ class htcondor::config (
     ensure  => file,
     content => epp('htcondor/condor_config.epp', {
       'condor_host'        => $condor_host,
-      'token_directory'    => $token_directory,
       'password_directory' => $password_directory,
       'domain'             => htcondor::params::$domain,
     }),
@@ -52,13 +48,6 @@ class htcondor::config (
     owner   => 'root',
     group   => 'root',
     notify  => Service['condor'],
-  }
-
-  file { $token_directory:
-    ensure  => directory,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0700',
   }
 
   file { $password_directory:
