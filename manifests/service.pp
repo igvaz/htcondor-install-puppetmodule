@@ -4,9 +4,11 @@
 # running and enabled on boot.
 
 class htcondor::service {
-   service { 'condor':
-    ensure => running,
-    enable => true,
-    require => Package['condor'],
- }
+  service { 'condor':
+    ensure     => running,
+    enable     => true,
+    require    => Package['condor'],
+    hasstatus  => true,
+    hasrestart => true,
+  }
 }

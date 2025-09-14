@@ -6,18 +6,20 @@
 #
 # @param condor_host
 #   The hostname of the HTCondor central manager.
-#
 # @param token_directory
 #   The directory where HTCondor security tokens are stored.
-#
 # @param password_directory
 #   The directory where HTCondor security passwords are stored.
+# @param local_dirs
+#   Array of local directories for HTCondor to use.
 
 class htcondor::config (
-  String $condor_host = 'condorcm.domain.com',
-  String $token_directory = '/etc/condor/tokens.d',
-  String $password_directory = '/etc/condor/passwords.d',
+  String $condor_host        = htcondor::params::$condor_host,
+  String $token_directory    = htcondor::params::$token_directory,
+  String $password_directory = htcondor::params::$password_directory,
+  Array[String] $local_dirs  = htcondor::params::$local_dirs,
 ) {
+  include htcondor::params
   include htcondor::security
 
   file { '/etc/condor':
@@ -44,6 +46,7 @@ class htcondor::config (
       'condor_host'        => $condor_host,
       'token_directory'    => $token_directory,
       'password_directory' => $password_directory,
+      'domain'             => htcondor::params::$domain,
     }),
     mode    => '0644',
     owner   => 'root',
@@ -64,11 +67,7 @@ class htcondor::config (
     group   => 'root',
     mode    => '0700',
   }
-  
-  $local_dirs = ['/localdisk1', '/localdisk1/condor', '/localdisk1/condor/run',
-                '/localdisk1/condor/lock', '/localdisk1/condor/spool', 
-                '/localdisk1/condor/execute']
-  
+
   file { $local_dirs:
     ensure => directory,
     owner  => 'condor',

@@ -88,11 +88,11 @@ SBIN    = $(RELEASE_DIR)/sbin
 LIBEXEC = $(RELEASE_DIR)/libexec/condor
 SHARE   = $(RELEASE_DIR)/share/condor
 
-CONDOR_HOST = <%= $condor_host %>
-COLLECTOR_HOST = <%= $condor_host %>
-SCHEDD_NAME = condorsched.domain.com
-UID_DOMAIN = domain.com
-FILESYSTEM_DOMAIN = domain.com
+CONDOR_HOST        = <%= $condor_host %>
+COLLECTOR_HOST     = <%= $condor_host %>
+SCHEDD_NAME        = condorsched.<%= $domain %>
+UID_DOMAIN         = <%= $domain %>
+FILESYSTEM_DOMAIN  = <%= $domain %>
 
 SEC_DEFAULT_AUTHENTICATION_METHODS = FS, IDTOKENS
 SEC_DEFAULT_AUTHENTICATION = REQUIRED
@@ -103,11 +103,12 @@ SEC_DEFAULT_INTEGRITY = OPTIONAL
 SEC_TOKEN_SYSTEM_DIRECTORY = <%= $token_directory %>
 SEC_PASSWORD_DIRECTORY = <%= $password_directory %>
 
-ALLOW_CONFIG = condorcm.domain.com
-ALLOW_ADMINISTRATOR = condorcm.domain.com
-ALLOW_DAEMON = *.domain.com, unauthenticated@unmapped
-ALLOW_READ = *.domain.com
-ALLOW_WRITE = *.domain.com
+ALLOW_CONFIG        = condorcm.<%= $domain %>
+ALLOW_ADMINISTRATOR = condorcm.<%= $domain %>
+ALLOW_DAEMON        = *.<%= $domain %>, unauthenticated@unmapped
+ALLOW_READ          = *.<%= $domain %>
+ALLOW_WRITE         = *.<%= $domain %>
+
 
 MAX_JOBS_RUNNING = 100000
 
