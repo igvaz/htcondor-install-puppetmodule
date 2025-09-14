@@ -1,3 +1,9 @@
+# @summary Configures an HTCondor Scheduler.
+#
+# This class configures a node to be an HTCondor Scheduler. It creates
+# a specific configuration file for the scheduler, a pool password for
+# authentication, and a condor token for secure communication.
+
 class htcondor::scheduler {
   file { '/etc/condor/config.d/21_schedd.config':
     ensure  => file,

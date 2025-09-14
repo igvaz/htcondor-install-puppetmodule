@@ -1,3 +1,9 @@
+# @summary Configures an HTCondor Central Manager.
+#
+# This class configures a node to be an HTCondor Central Manager. It creates
+# a specific configuration file for the manager, a pool password for
+# authentication, and a condor token for secure communication.
+
 class htcondor::central_manager {
   file { '/etc/condor/config.d/22_manager.config':
     ensure  => file,

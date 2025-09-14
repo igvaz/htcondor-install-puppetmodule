@@ -1,3 +1,7 @@
+# @summary Manages HTCondor security configuration.
+#
+# This class manages the main security configuration file for HTCondor.
+
 class htcondor::security {
   file { '/etc/condor/config.d/00-security':
     ensure  => file,

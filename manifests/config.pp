@@ -1,3 +1,18 @@
+# @summary Manages HTCondor configuration files.
+#
+# This class manages the main HTCondor configuration file `/etc/condor/condor_config`,
+# and several related directories. It creates the main configuration directories and
+# also local directories for HTCondor to use.
+#
+# @param condor_host
+#   The hostname of the HTCondor central manager.
+#
+# @param token_directory
+#   The directory where HTCondor security tokens are stored.
+#
+# @param password_directory
+#   The directory where HTCondor security passwords are stored.
+
 class htcondor::config (
   String $condor_host = 'condorcm.domain.com',
   String $token_directory = '/etc/condor/tokens.d',

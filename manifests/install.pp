@@ -1,4 +1,9 @@
-# Modify this content accordingly to your environment
+# @summary Manages the installation of HTCondor.
+#
+# This class manages the HTCondor YUM repository and the installation of the
+# `condor` package. It ensures that the HTCondor repository is configured
+# and that the HTCondor package is installed.
+# You can modify this content accordingly to your environment
 
 class htcondor::install {
   yumrepo { 'htcondor-stable':

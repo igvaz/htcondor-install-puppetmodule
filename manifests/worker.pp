@@ -1,7 +1,10 @@
-class htcondor::worker {
-  include htcondor::install
-  include htcondor::service
-  
+# @summary Configures an HTCondor Worker node.
+#
+# It creates a specific configuration file for the
+# worker, a sudoers file to grant necessary permissions, a pool password for
+# authentication, and a condor token for secure communication.
+
+class htcondor::worker {  
   file { '/etc/condor/config.d/20_workernode.config':
     ensure  => file,
     content => epp('htcondor/20_workernode.config.epp'),

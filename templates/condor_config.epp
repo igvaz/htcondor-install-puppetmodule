@@ -89,10 +89,9 @@ LIBEXEC = $(RELEASE_DIR)/libexec/condor
 SHARE   = $(RELEASE_DIR)/share/condor
 
 CONDOR_HOST = <%= $condor_host %>
-COLLECTOR_HOST = condorcm.domain.com
+COLLECTOR_HOST = <%= $condor_host %>
 SCHEDD_NAME = condorsched.domain.com
 UID_DOMAIN = domain.com
-COLLECTOR_HOST = <%= $condor_host %>
 FILESYSTEM_DOMAIN = domain.com
 
 SEC_DEFAULT_AUTHENTICATION_METHODS = FS, IDTOKENS
