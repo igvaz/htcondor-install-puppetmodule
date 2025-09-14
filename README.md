@@ -27,34 +27,16 @@ git clone https://github.com/igvaz/htcondor-install-puppetmodule.git /etc/puppet
 
 ## Setup
 
-To use this module, include the main `htcondor` class in your Puppet manifests. You must change the following accordingly with your environment: 
-
-```puppet
-class { 'htcondor':
-  condor_host        => 'central_manager_hostname',
-  condor_schedd      => 'scheduler_hostname',
-  domain             => 'example.domain.com',
-  local_dirs         => [
-    '/localdisk1', '/localdisk1/condor', '/localdisk1/condor/run',
-    '/localdisk1/condor/lock', '/localdisk1/condor/spool', 
-    '/localdisk1/condor/execute'
-  ],
-  pool_password      => 'your_pool_password',
-}
-```
-
-
-### Parameters
-
-All parameters are centralized in `htcondor::params` for easy management and override.
+To use this module, include the main `htcondor` class in your Puppet manifests. You must change the following parameters centralized in `htcondor::params` accordingly with your environment: 
 
 | Parameter           | Description                                      | Default Value                      |
 |---------------------|--------------------------------------------------|------------------------------------|
 | `condor_host`       | Hostname of the HTCondor central manager         | `'central_manager_hostname'`       |
 | `condor_schedd`     | Hostname of the HTCondor scheduler               | `'scheduler_hostname'`             |
 | `domain`            | Domain used for UID_DOMAIN and related settings  | `'example.domain.com'`             |
-| `local_dirs`        | Array of local directories for HTCondor usage    | See example above                  |
+| `local_dirs`        | Array of local directories for HTCondor usage    | See example in `htcondor::params`  |
 | `pool_password`     | Password for pool authentication                 | `'your_pool_password'`             |
+
 
 ## Configuration Templates
 
@@ -67,7 +49,6 @@ Edit the EPP templates in the `templates/` directory to match your environment a
 - `22_manager.config.epp`
 
 For more details, see the [HTCondor documentation](https://htcondor.readthedocs.io/en/latest/admin-manual).
-
 
 ## Classes Reference
 
