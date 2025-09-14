@@ -16,6 +16,6 @@ class htcondor::params {
     '/localdisk1/condor/spool',
     '/localdisk1/condor/execute'
   ]
-  $pool_password      = 'secretpassword'
+  $pool_password      = 'your_pool_password'
   $domain             = 'example.domain.com'
 }

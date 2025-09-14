@@ -13,11 +13,6 @@ class htcondor (
   include htcondor::params
   include htcondor::install
   include htcondor::service
+  include htcondor::config
   include htcondor::security
-
-  class { 'htcondor::config':
-    condor_host        => $condor_host,
-    password_directory => $password_directory,
-    local_dirs         => $local_dirs,
-  }
 }

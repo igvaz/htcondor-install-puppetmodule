@@ -1,15 +1,8 @@
 # @summary Configures an HTCondor Scheduler.
 #
 # This class configures a node to be an HTCondor Scheduler. It creates
-# a specific configuration file for the scheduler, a pool password for
-# authentication, and a condor token for secure communication.
-#
-# @param condor_host
-#   The hostname of the HTCondor central manager.
-# @param password_directory
-#   Directory for HTCondor passwords.
-# @param pool_password
-#   Password for pool authentication.
+# a specific configuration file for the scheduler and a pool password for
+# authentication.
 
 class htcondor::scheduler (
   String $condor_host        = $htcondor::params::condor_host,
@@ -21,9 +14,7 @@ class htcondor::scheduler (
 
   file { '/etc/condor/config.d/21_schedd.config':
     ensure  => file,
-    content => epp('htcondor/21_schedd.config.epp', {
-      'condor_host' => $condor_host,
-    }),
+    content => epp('htcondor/21_schedd.config.epp'),
     mode    => '0644',
     owner   => 'root',
     group   => 'root',

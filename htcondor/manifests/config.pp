@@ -3,13 +3,6 @@
 # This class manages the main HTCondor configuration file `/etc/condor/condor_config`,
 # and several related directories. It creates the main configuration directories and
 # also local directories for HTCondor to use.
-#
-# @param condor_host
-#   The hostname of the HTCondor central manager.
-# @param password_directory
-#   The directory where HTCondor security passwords are stored.
-# @param local_dirs
-#   Array of local directories for HTCondor to use.
 
 class htcondor::config (
   String $condor_host        = $htcondor::params::condor_host,
@@ -40,12 +33,7 @@ class htcondor::config (
 
   file { '/etc/condor/condor_config':
     ensure  => file,
-    content => epp('htcondor/condor_config.epp', {
-      'condor_host'        => $condor_host,
-      'condor_sched'       => $condor_sched,
-      'password_directory' => $password_directory,
-      'domain'             => $htcondor::params::domain,
-    }),
+    content => epp('htcondor/condor_config.epp'),
     mode    => '0644',
     owner   => 'root',
     group   => 'root',

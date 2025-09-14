@@ -1,15 +1,7 @@
 # @summary Configures an HTCondor Worker node.
 #
 # It creates a specific configuration file for the worker, a sudoers file to grant
-# necessary permissions, a pool password for authentication, and a condor token for
-# secure communication.
-#
-# @param condor_host
-#   The hostname of the HTCondor central manager.
-# @param password_directory
-#   Directory for HTCondor passwords.
-# @param pool_password
-#   Password for pool authentication.
+# necessary permissions and a pool password for authentication
 
 class htcondor::worker (
   String $condor_host        = $htcondor::params::condor_host,
@@ -21,9 +13,7 @@ class htcondor::worker (
 
   file { '/etc/condor/config.d/20_workernode.config':
     ensure  => file,
-    content => epp('htcondor/20_workernode.config.epp', {
-      'condor_host' => $condor_host,
-    }),
+    content => epp('htcondor/20_workernode.config.epp'),
     mode    => '0644',
     owner   => 'root',
     group   => 'root',
